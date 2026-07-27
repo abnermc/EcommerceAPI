@@ -1,3 +1,4 @@
+using API.Middlewares;
 using Application.Interfaces;
 using Application.UseCases;
 using Infrastructure.Persistence;
@@ -118,6 +119,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
