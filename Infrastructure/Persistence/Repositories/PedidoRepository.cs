@@ -1,9 +1,10 @@
-﻿using Domain.Entities;
+﻿using Application.Interfaces;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories
 {
-    public class PedidoRepository
+    public class PedidoRepository : IPedidoRepository
     {
         private readonly EcommerceDbContext _context;
 
