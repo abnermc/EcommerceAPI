@@ -13,7 +13,8 @@ public class DetallePedidoConfiguration : IEntityTypeConfiguration<DetallePedido
         builder.HasKey(d => d.Id);
 
         builder.Property(d => d.Id)
-            .HasColumnName("id");
+            .HasColumnName("id")
+            .ValueGeneratedNever();
 
         builder.Property(d => d.PedidoId)
             .HasColumnName("pedido_id")

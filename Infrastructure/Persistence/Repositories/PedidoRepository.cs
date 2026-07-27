@@ -28,7 +28,12 @@ namespace Infrastructure.Persistence.Repositories
         public async Task AgregarAsync(Pedido pedido)
             => await _context.Pedidos.AddAsync(pedido);
 
-        public async Task ActualizarAsync(Pedido pedido)
-            => _context.Pedidos.Update(pedido);
+        public Task ActualizarAsync(Pedido pedido)
+        {
+            if (_context.Entry(pedido).State == EntityState.Detached)
+                _context.Pedidos.Update(pedido);
+
+            return Task.CompletedTask;
+        }
     }
 }
