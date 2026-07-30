@@ -36,6 +36,10 @@ builder.Services.AddHttpClient<IBackofficeService, BackofficeService>(client =>
             ?? throw new InvalidOperationException(
                 "BackofficeApi:BaseUrl no configurada."));
     client.Timeout = TimeSpan.FromSeconds(10);
+
+    var backofficeApiKey = builder.Configuration["BackofficeApi:ApiKey"]
+        ?? throw new InvalidOperationException("BackofficeApi:ApiKey no configurada.");
+    client.DefaultRequestHeaders.Add("X-Internal-Api-Key", backofficeApiKey);
 });
 
 // Casos de uso 

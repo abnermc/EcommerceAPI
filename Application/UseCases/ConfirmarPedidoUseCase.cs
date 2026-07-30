@@ -31,7 +31,7 @@ namespace Application.UseCases
             // Validación rápida contra copia local
             foreach (var detalle in pedido.Detalles)
             {
-                var catalogo = await _catalogoRepository.ObtenerPorProductoIdAsync(detalle.PedidoId);
+                var catalogo = await _catalogoRepository.ObtenerPorProductoIdAsync(detalle.ProductoId);
 
                 if (catalogo is null || !catalogo.TieneDisponibilidadEstimada(detalle.Cantidad)){
                     pedido.Rechazar();
